@@ -1,25 +1,29 @@
-# Iris Flower Classification
+# CODSOFT Data Science Internship Projects
 
-This is a simple machine learning project created as part of the CODSOFT Data Science Internship.
+This repository contains projects completed as part of the CODSOFT Data Science Internship.
 
-The goal of this project is to classify iris flowers into different species based on their measurements.
+---
 
-## Dataset
+# Task 1: Iris Flower Classification
 
-The dataset used is the Iris dataset.
+## Task Description
 
-It contains the following features:
+The objective of this project is to build a machine learning model that can classify iris flowers into different species based on their measurements.
+
+The dataset contains the following features:
 
 - Sepal Length
 - Sepal Width
 - Petal Length
 - Petal Width
 
-Target classes:
+The model predicts the flower species:
 
 - Setosa
 - Versicolor
 - Virginica
+
+This is a classification machine learning problem.
 
 ## Technologies Used
 
@@ -29,41 +33,106 @@ Target classes:
 - Seaborn
 - Scikit-learn
 
-## Steps Performed
-
-1. Loaded the dataset from CSV file
-2. Checked dataset shape and columns
-3. Checked for missing values
-4. Checked class distribution
-5. Visualized the data using pairplot
-6. Converted species names into numeric values
-7. Split dataset into training and testing data
-8. Trained the model using K-Nearest Neighbors
-9. Made predictions
-10. Evaluated model performance using accuracy, confusion matrix, and classification report
-
 ## Model Used
 
-K-Nearest Neighbors (KNN)
+- K-Nearest Neighbors (KNN)
 
-## Results
+## Steps Performed
 
-The model achieved high accuracy in classifying iris flower species.
+- Loaded the Iris dataset
+- Checked dataset structure
+- Checked missing values
+- Visualized data using pairplot
+- Encoded species labels
+- Split dataset into training and testing sets
+- Trained the machine learning model
+- Made predictions
+- Evaluated performance
 
 ## Output
 
-The project generates:
-
 - Dataset preview
+- Dataset summary
 - Class distribution
 - Pairplot visualization
+- Accuracy score
 - Confusion matrix
 - Classification report
+
+---
+
+# Task 2: Titanic Survival Prediction
+
+## Task Description
+
+The objective of this project is to build a machine learning model that predicts whether a passenger survived the Titanic disaster based on passenger details.
+
+The dataset includes information such as:
+
+- Passenger Class
+- Gender
+- Age
+- Number of Siblings/Spouses
+- Number of Parents/Children
+- Fare
+- Embarked Port
+
+The target prediction is:
+
+- Survived
+- Did Not Survive
+
+This is a binary classification machine learning problem.
+
+## Technologies Used
+
+- Python
+- Pandas
+- Matplotlib
+- Seaborn
+- Scikit-learn
+
+## Model Used
+
+- Logistic Regression
+
+## Steps Performed
+
+- Loaded the Titanic dataset
+- Checked dataset structure
+- Checked missing values
+- Removed unnecessary columns
+- Filled missing values
+- Encoded categorical columns
+- Split dataset into training and testing sets
+- Trained Logistic Regression model
+- Made predictions
+- Evaluated performance
+- Created scatter plot visualization
+
+## Output
+
+- Dataset preview
+- Missing value analysis
+- Survival class distribution
 - Accuracy score
+- Confusion matrix
+- Classification report
+- Scatter plot visualization
 
-## How to Run
+---
 
-Install required libraries:
+# Repository Structure
 
-```bash
-pip install pandas matplotlib seaborn scikit-learn
+```text
+CODSOFT/
+│
+├── Task1_Iris_Classification/
+│   ├── IRIS.csv
+│   ├── iris_classification.py
+│
+├── Task2_Titanic_Survival/
+│   ├── Titanic-Dataset.csv
+│   ├── titanic_prediction.py
+│
+└── README.md
