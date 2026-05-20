@@ -1,63 +1,48 @@
-# Iris Flower Classification Project
-# CodSoft Internship Task 3
-
-# importing libraries
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
-# loading iris dataset from csv file
-data = pd.read_csv("IRIS.csv")
+df = pd.read_csv("IRIS.csv")
 
-# showing first rows
-print("Iris Dataset\n")
-print(data.head())
+print(df.head())
+print(df.shape)
+print(df.columns)
+print(df.isnull().sum())
+print(df["species"].value_counts())
 
-# checking dataset size
-print("\nShape of dataset:")
-print(data.shape)
-
-# checking null values
-print("\nMissing Values:")
-print(data.isnull().sum())
-
-# graph for understanding data
-sns.pairplot(data, hue="species")
+sns.pairplot(df, hue="species")
 plt.show()
 
-# input and output data
-x = data.drop("species", axis=1)
-y = data["species"]
+encoder = LabelEncoder()
+df["species"] = encoder.fit_transform(df["species"])
 
-# splitting dataset
-x_train, x_test, y_train, y_test = train_test_split(
-    x, y, test_size=0.2
+X = df.drop("species", axis=1)
+y = df["species"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
 )
 
-# creating model
-knn = KNeighborsClassifier()
+model = KNeighborsClassifier()
 
-# training model
-knn.fit(x_train, y_train)
+model.fit(X_train, y_train)
 
-# predicting output
-prediction = knn.predict(x_test)
+predictions = model.predict(X_test)
 
-# checking accuracy
-acc = accuracy_score(y_test, prediction)
+accuracy = accuracy_score(y_test, predictions)
+print("Accuracy:", accuracy)
 
-print("\nAccuracy of Model:")
-print(acc * 100)
+cm = confusion_matrix(y_test, predictions)
+print(cm)
 
-# giving sample flower data
-sample_flower = [[5.1, 3.5, 1.4, 0.2]]
+print(classification_report(y_test, predictions))
 
-# predicting flower name
-result = knn.predict(sample_flower)
-
-print("\nPredicted Flower is:")
-print(result[0])
+sns.heatmap(cm, annot=True)
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.show()
